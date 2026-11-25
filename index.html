@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kit numérique : M365, Windows & Cybersécurité</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--tx:#14213d;--mut:#5b6784;--pri:#2563eb;--ok:#16a34a;--ko:#dc2626;--warn:#f59e0b;--bd:#e2e8f0;--hero:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#06b6d4);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#131c31;--tx:#e8edf8;--mut:#9aa7c4;--bd:#243049;--pri:#60a5fa;--ok:#4ade80;--ko:#f87171;--warn:#fbbf24}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131c31;--tx:#e8edf8;--mut:#9aa7c4;--bd:#243049;--pri:#60a5fa;--ok:#4ade80;--ko:#f87171;--warn:#fbbf24}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:980px;margin:auto;padding:0 16px 48px}
+.hero{background:var(--hero);color:#fff;border-radius:0 0 28px 28px;padding:36px 20px 28px;text-align:center;margin:0 -16px 8px}
+.hero h1{margin:6px 0;font-size:clamp(26px,6vw,42px)}.hero p{margin:0 auto;max-width:520px;opacity:.9}
+.big{font-size:54px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px 0;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav a{white-space:nowrap;background:var(--card);border:1px solid var(--bd);color:var(--tx);text-decoration:none;padding:8px 14px;border-radius:99px;font-size:14px}
+h2{font-size:24px;margin:34px 0 4px}.sub{color:var(--mut);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;text-align:center}
+.card .ic{font-size:36px;display:block;margin-bottom:4px}.card b{display:block}.card small{color:var(--mut)}
+.flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.flow span.s{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;font-weight:600}
+.flow i{color:var(--pri);font-style:normal;font-size:20px}
+kbd{display:inline-block;background:var(--bg);border:1px solid var(--bd);border-bottom-width:3px;border-radius:8px;padding:3px 9px;font:600 14px ui-monospace,monospace;margin:1px}
+.mail{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.mail .hd{padding:12px 14px;background:var(--bg);font-size:14px;border-bottom:1px solid var(--bd)}
+.mail .bd{padding:14px}
+.pin{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--ko);color:#fff;font:700 12px/1 system-ui;align-items:center;justify-content:center;vertical-align:middle;margin-left:4px;border:0;cursor:pointer}
+.btnfake{display:inline-block;background:#0078d4;color:#fff;padding:10px 16px;border-radius:6px;margin:8px 0}
+.flags{display:grid;gap:8px;margin-top:12px}
+.flag{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;font-size:15px}
+.flag .pin{flex:none;cursor:default}
+.dom{display:grid;gap:8px}
+.dom div{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;font-family:ui-monospace,monospace;font-size:14px;word-break:break-all}
+.dom .y{border-left:5px solid var(--ok)}.dom .n{border-left:5px solid var(--ko)}
+mark{background:rgba(220,38,38,.22);color:var(--ko);border-radius:4px;padding:0 2px}
+.rule{background:var(--hero);color:#fff;border-radius:16px;padding:14px;margin-top:12px;text-align:center;font-weight:600}
+.stop{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stop .card b{font-size:34px;color:var(--ko)}
+.quiz{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px}
+.quiz .q{font-size:18px;font-weight:700;margin-bottom:12px}
+.opts{display:grid;gap:8px}
+.opts button{font:inherit;color:var(--tx);background:var(--bg);border:2px solid var(--bd);border-radius:12px;padding:12px;text-align:left;cursor:pointer}
+.opts button.ok{border-color:var(--ok)}.opts button.ko{border-color:var(--ko)}
+.why{margin-top:10px;color:var(--mut);min-height:22px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin-bottom:12px}.bar i{display:block;height:100%;background:var(--pri);width:0;transition:width .3s}
+.nx{margin-top:10px;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:10px 16px;font:inherit;cursor:pointer;display:none}
+button.card{font:inherit;color:var(--tx);cursor:pointer;width:100%;transition:transform .15s,border-color .15s}button.card:hover{transform:translateY(-2px);border-color:var(--pri)}button.card.on{border:2px solid var(--pri);background:var(--bg)}
+.panel{display:none;margin-top:14px;background:var(--card);border:2px solid var(--pri);border-radius:18px;padding:18px}.panel.open{display:block}
+.panel h3{margin:0 0 12px;font-size:20px}.panel h4{margin:16px 0 8px;color:var(--pri);font-size:16px}
+.st{display:flex;gap:10px;align-items:flex-start;margin:8px 0}.st b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tip{margin-top:12px;background:var(--bg);border-left:5px solid var(--warn);border-radius:10px;padding:10px 12px;font-size:15px}
+.mock{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin:10px 0;background:var(--bg)}.mh{background:var(--pri);color:#fff;padding:8px 12px;font-size:14px;font-weight:600}.mb{padding:14px;text-align:center}
+.meter{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:13px;font-family:ui-monospace,monospace}.meter i{display:block;height:10px;border-radius:9px;flex:none}.meter span{word-break:break-all}
+.ban{background:var(--ko);color:#fff;border-radius:16px;padding:16px;margin-top:12px;font-weight:700;text-align:center;font-size:17px}.ban small{display:block;font-weight:400;margin-top:6px;opacity:.95;font-size:14px}
+.fm{display:grid;gap:10px}.fm input,.fm select,.fm textarea{font:inherit;color:var(--tx);background:var(--bg);border:2px solid var(--bd);border-radius:12px;padding:12px;width:100%}
+details{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin:8px 0}summary{cursor:pointer;font-weight:700}details p{margin:10px 0 0;color:var(--mut)}
+#fq{font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:12px;width:100%;margin-bottom:8px}
+footer{text-align:center;color:var(--mut);font-size:13px;margin-top:36px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="big">🛡️💻</div>
+<h1>Le numérique, sans stress</h1>
+<p>Microsoft 365 · Windows · Cybersécurité. Le kit visuel pour tous les collègues.</p>
+</header>
+<nav>
+<a href="#m365">☁️ M365</a><a href="#win">🪟 Windows</a><a href="#phish">🎣 Phishing</a><a href="#domain">🔍 Domaine</a><a href="#stop">🛑 Réflexe</a><a href="#hygiene">🔐 Hygiène</a><a href="#access">♿ Accessibilité</a><a href="#quiz">🧠 Quiz</a><a href="#faq">❓ Aide</a><a href="#contact">💌 Contact</a><a href="#qr">🙋 Q&R</a>
+</nav>
+
+<section id="m365">
+<h2>☁️ Microsoft 365 en 1 coup d’œil</h2>
+<p class="sub">Chaque appli a un rôle. Tout est relié à votre compte pro.</p>
+<div class="grid">
+<button class="card app" data-k="outlook"><span class="ic">✉️</span><b>Outlook</b><small>Mails & agenda</small></button>
+<button class="card app" data-k="teams"><span class="ic">💬</span><b>Teams</b><small>Chat & visio</small></button>
+<button class="card app" data-k="onedrive"><span class="ic">☁️</span><b>OneDrive</b><small>Mes fichiers</small></button>
+<button class="card app" data-k="sharepoint"><span class="ic">🗂️</span><b>SharePoint</b><small>Fichiers d’équipe</small></button>
+<button class="card app" data-k="word"><span class="ic">📝</span><b>Word</b><small>Documents</small></button>
+<button class="card app" data-k="excel"><span class="ic">📊</span><b>Excel</b><small>Tableaux</small></button>
+<button class="card app" data-k="ppt"><span class="ic">📽️</span><b>PowerPoint</b><small>Présentations</small></button>
+<button class="card app" data-k="planner"><span class="ic">✅</span><b>Planner / To Do</b><small>Tâches</small></button>
+</div>
+<p class="sub" style="margin-top:10px">👆 Touchez une appli pour voir le mode d’emploi pas à pas.</p>
+<div id="panel" class="panel"></div>
+<div class="flow"><span class="s">📄 Je crée</span><i>→</i><span class="s">☁️ OneDrive</span><i>→</i><span class="s">🔗 Je partage</span><i>→</i><span class="s">👥 Équipe</span><i>→</i><span class="s">✍️ Co-édition</span></div>
+</section>
+
+<section id="win">
+<h2>🪟 Windows : 4 raccourcis qui sauvent</h2>
+<p class="sub">Gagner du temps, chaque jour.</p>
+<div class="grid">
+<div class="card"><span class="ic">📁</span><kbd>Win</kbd>+<kbd>E</kbd><small>Explorateur</small></div>
+<div class="card"><span class="ic">🔒</span><kbd>Win</kbd>+<kbd>L</kbd><small>Verrouiller</small></div>
+<div class="card"><span class="ic">✂️</span><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd><small>Capture d’écran</small></div>
+<div class="card"><span class="ic">📋</span><kbd>Win</kbd>+<kbd>V</kbd><small>Historique copier-coller</small></div>
+</div>
+</section>
+
+<section id="phish">
+<h2>🎣 Anatomie d’un faux mail</h2>
+<p class="sub">Trouvez les 5 pièges (numéros rouges).</p>
+<div class="mail">
+<div class="hd"><b>De :</b> Microsoft Support &lt;no-reply@micr0soft-secure.xyz&gt; <span class="pin">1</span><br><b>Objet :</b> ⚠️ Compte suspendu sous 24 h ! <span class="pin">2</span></div>
+<div class="bd">
+Cher client, <span class="pin">3</span><br>Votre boîte mail est pleine. Cliquez pour éviter la suppression.<br>
+<span class="btnfake">Vérifier mon compte</span> <span class="pin">4</span><br>
+<small>📎 facture_urgente.zip</small> <span class="pin">5</span>
+</div>
+</div>
+<div class="flags">
+<div class="flag"><span class="pin">1</span>Expéditeur bizarre : faute dans le domaine</div>
+<div class="flag"><span class="pin">2</span>Urgence & menace pour vous faire paniquer</div>
+<div class="flag"><span class="pin">3</span>Message générique, pas votre nom</div>
+<div class="flag"><span class="pin">4</span>Bouton : survolez, le vrai lien est différent</div>
+<div class="flag"><span class="pin">5</span>Pièce jointe inattendue (.zip, .exe)</div>
+</div>
+</section>
+
+<section id="domain">
+<h2>🔍 Lire le nom de domaine</h2>
+<p class="sub">Regardez ce qui est juste avant le premier « / » ou après le « @ ».</p>
+<div class="dom">
+<div class="y">✅ contact@microsoft.com</div>
+<div class="n">❌ contact@micr<mark>0</mark>soft.com</div>
+<div class="n">❌ contact@micro<mark>s0ft</mark>.com</div>
+<div class="n">❌ support@microsoft<mark>-secure.xyz</mark></div>
+<div class="n">❌ microsoft.com<mark>.alerte-compte.ru</mark>/login</div>
+</div>
+<div class="rule">Le vrai domaine = les derniers mots avant la fin (.com, .fr). Tout ce qui est devant le dernier point est suspect.</div>
+</section>
+
+<section id="stop">
+<h2>🛑 Le réflexe S.T.O.P.</h2>
+<p class="sub">Un doute ? Quatre gestes.</p>
+<div class="stop">
+<div class="card"><b>S</b><span class="ic">✋</span>Stoppez. Ne cliquez pas.</div>
+<div class="card"><b>T</b><span class="ic">🔎</span>Testez l’expéditeur et le domaine.</div>
+<div class="card"><b>O</b><span class="ic">📞</span>Obtenez confirmation par un autre canal.</div>
+<div class="card"><b>P</b><span class="ic">🚩</span>Prévenez le service IT, signalez.</div>
+</div>
+<div class="ban">🚨 Un doute sur un mail ? Contactez immédiatement le service IT, sans attendre.<small>Ne cliquez pas, ne répondez pas, ne transférez pas. Déjà cliqué ? Prévenez l’IT tout de suite : plus c’est rapide, moins il y a de dégâts.</small></div>
+</section>
+
+<section id="hygiene">
+<h2>🔐 Hygiène numérique</h2>
+<p class="sub">Six habitudes qui changent tout.</p>
+<div class="grid">
+<button class="card hy" data-k="mfa"><span class="ic">📱</span><b>MFA activée</b><small>Double validation</small></button>
+<button class="card hy" data-k="mdp"><span class="ic">🔑</span><b>Phrase de passe</b><small>Longue, unique</small></button>
+<button class="card hy" data-k="maj"><span class="ic">🔄</span><b>Mises à jour</b><small>Windows & apps</small></button>
+<button class="card hy" data-k="lock"><span class="ic">🔒</span><b>Poste verrouillé</b><small>Quand je pars</small></button>
+<button class="card hy" data-k="save"><span class="ic">☁️</span><b>Sauvegarde</b><small>Dans OneDrive</small></button>
+<button class="card hy" data-k="rep"><span class="ic">🚩</span><b>Je signale</b><small>Sans honte</small></button>
+</div>
+<p class="sub" style="margin-top:10px">👆 Touchez une carte pour voir comment faire.</p>
+<div id="panel2" class="panel"></div>
+</section>
+
+<section id="access">
+<h2>♿ Outils d’accessibilité natifs</h2>
+<p class="sub">Déjà dans Windows et M365, utiles aux profils DYS.</p>
+<div class="grid">
+<div class="card"><span class="ic">📖</span><b>Lecteur immersif</b><small>Word, Outlook, Edge</small></div>
+<div class="card"><span class="ic">🎤</span><b>Dictée</b><kbd>Win</kbd>+<kbd>H</kbd></div>
+<div class="card"><span class="ic">🔍</span><b>Loupe</b><kbd>Win</kbd>+<kbd>+</kbd></div>
+<div class="card"><span class="ic">💬</span><b>Sous-titres Teams</b><small>En direct</small></div>
+</div>
+</section>
+
+<section id="quiz">
+<h2>🧠 Mini-quiz</h2>
+<p class="sub">13 questions pour tester vos réflexes.</p>
+<div class="quiz"><div class="bar"><i id="pb"></i></div><div id="qa"></div></div>
+</section>
+
+<section id="faq">
+<h2>❓ Aide rapide</h2>
+<p class="sub">Cherchez votre problème avant de poser une question.</p>
+<input id="fq" type="search" placeholder="🔎 Rechercher : mail, mot de passe, Teams…">
+<div id="fl">
+<details><summary>Comment savoir si un mail est un faux ?</summary><p>Vérifiez l’adresse de l’expéditeur (lettres changées, domaine étrange), méfiez-vous de l’urgence, survolez les liens sans cliquer, et ne touchez pas aux pièces jointes inattendues. Un doute : contactez immédiatement le service IT.</p></details>
+<details><summary>J’ai cliqué sur un lien suspect, que faire ?</summary><p>Ne paniquez pas, mais prévenez l’IT tout de suite. Ne saisissez aucun mot de passe. Si vous en avez saisi un, changez-le et dites-le à l’IT.</p></details>
+<details><summary>Comment créer un lien de visio Teams ?</summary><p>Teams, Calendrier, Nouvelle réunion, titre et invités, Enregistrer. Le lien est créé et envoyé aux invités. Ou « Réunion instantanée » puis « Copier le lien ».</p></details>
+<details><summary>Comment sauvegarder mes fichiers dans OneDrive ?</summary><p>Enregistrez dans le dossier OneDrive de l’Explorateur (Win+E). Un nuage vert signifie que c’est sauvegardé. Activez aussi la sauvegarde de Bureau et Documents.</p></details>
+<details><summary>Quelle différence entre OneDrive et SharePoint ?</summary><p>OneDrive = vos fichiers personnels. SharePoint = les fichiers partagés par toute l’équipe.</p></details>
+<details><summary>Comment mettre à jour mon PC ?</summary><p>Paramètres (Win+I), Windows Update, Rechercher des mises à jour, Installer, puis redémarrer.</p></details>
+<details><summary>Comment créer un mot de passe solide ?</summary><p>Une phrase longue d’au moins 14 caractères, différente pour chaque compte, sans infos personnelles. Activez aussi la double validation (MFA).</p></details>
+<details><summary>Comment faire un tableau simple dans Excel ?</summary><p>Titres en ligne 1, données dessous, tout sélectionner, Insertion, Tableau. Pour un total : =SOMME( puis les cellules.</p></details>
+<details><summary>À qui demander de l’aide ?</summary><p>Au service IT de votre entreprise, sans attendre, ou via le formulaire plus bas pour une question sur ce kit.</p></details>
+</div>
+<p id="fnone" class="sub" style="display:none">Rien trouvé ? Posez votre question dans le formulaire ci-dessous 👇</p>
+</section>
+
+<section id="contact">
+<h2>💌 Une question ? Une idée ?</h2>
+<p class="sub">Un point pas clair ou une suggestion ? Le message arrive directement chez moi.</p>
+<div class="quiz">
+<form class="fm" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="d2476fa9-52a9-4e00-aa90-c77a53ad6091">
+<input type="hidden" name="subject" value="[Kit numérique] Nouveau message">
+<input type="hidden" name="from_name" value="Kit numérique">
+<select name="type"><option>❓ Je n’ai pas compris</option><option>💡 Suggestion d’amélioration</option><option>🐞 Un problème</option></select>
+<input name="name" placeholder="Votre prénom (facultatif)">
+<input name="email" type="email" placeholder="Votre e-mail (pour recevoir ma réponse)">
+<textarea name="message" rows="4" placeholder="Votre message…" required></textarea>
+<input type="checkbox" name="botcheck" style="display:none">
+<button class="nx" style="display:inline-block" type="submit">Envoyer ✉️</button>
+</form></div>
+</section>
+
+<section id="qr">
+<h2>🙋 Questions & réponses</h2>
+<p class="sub">Posez une question publique. Je réponds ici, et tout le monde voit la réponse.</p>
+<div class="quiz"><script src="https://giscus.app/client.js"
+data-repo="MaoHackk/kit-numerique" data-repo-id="A_REMPLIR"
+data-category="Q&A" data-category-id="A_REMPLIR"
+data-mapping="pathname" data-reactions-enabled="1"
+data-input-position="top" data-theme="preferred_color_scheme"
+data-lang="fr" crossorigin="anonymous" async></script></div>
+</section>
+
+<footer>Kit de sensibilisation · conçu par Malick Ndiaye (MaoHackk)</footer>
+</main>
+<script>
+var Q=[
+{q:"Quel expéditeur est le vrai ?",o:["support@microsoft.com","support@micr0soft.com"],a:0,w:"Le zéro à la place du « o » est un classique."},
+{q:"Un mail dit : « Agissez sous 24 h ou compte supprimé ». Vous…",o:["Cliquez vite","Vérifiez par un autre canal"],a:1,w:"L’urgence est une arme des pirates."},
+{q:"Où est le vrai domaine de microsoft.com.alerte.ru ?",o:["alerte.ru","microsoft.com"],a:0,w:"Le domaine se lit à la fin, juste avant le premier « / »."},
+{q:"Vous avez cliqué par erreur. Que faire ?",o:["Rien, ça ira","Prévenir l’IT tout de suite"],a:1,w:"Plus on signale tôt, moins il y a de dégâts."}
+];
+Q=Q.concat([
+{q:"Quel mot de passe est le plus solide ?",o:["Marseille2024","Mon chat boit du thé à 7h!"],a:1,w:"Une phrase longue est bien plus dure à casser."},
+{q:"Le même mot de passe sur tous vos comptes ?",o:["Non, un différent par compte","Oui, c’est pratique"],a:0,w:"Une fuite sur un site expose tous vos autres comptes."},
+{q:"À quoi sert la double validation (MFA) ?",o:["À aller plus vite","À bloquer le pirate même s’il a mon mot de passe"],a:1,w:"Il lui manque le deuxième facteur : votre téléphone."},
+{q:"Un cadenas 🔒 dans le navigateur : le site est sûr ?",o:["Oui, forcément","Non, il prouve seulement que la connexion est chiffrée"],a:1,w:"Les sites frauduleux ont aussi un cadenas."},
+{q:"Vous trouvez une clé USB au parking.",o:["Je la remets au service IT","Je la branche pour voir"],a:0,w:"Une clé inconnue peut installer un virus dès le branchement."},
+{q:"Un .zip inattendu d’un collègue arrive par mail.",o:["J’ouvre, c’est un collègue","Je le contacte par un autre canal"],a:1,w:"Son compte a peut-être été piraté."},
+{q:"Vous quittez votre poste 5 minutes.",o:["Je laisse ouvert","Je verrouille avec Win+L"],a:1,w:"Un poste ouvert est une porte ouverte."},
+{q:"Un « technicien » demande votre mot de passe par mail.",o:["Je refuse et je préviens l’IT","Je l’envoie, c’est urgent"],a:0,w:"L’IT ne demande jamais votre mot de passe."},
+{q:"Windows propose une mise à jour.",o:["Je l’installe rapidement","Je repousse indéfiniment"],a:0,w:"Les mises à jour corrigent des failles de sécurité."}
+]);
+var i=0,s=0,qa=document.getElementById("qa"),pb=document.getElementById("pb");
+function show(){
+ pb.style.width=(i/Q.length*100)+"%";
+ if(i>=Q.length){pb.style.width="100%";qa.innerHTML='<div class="q">Score : '+s+' / '+Q.length+(s>=3?' 🎉 Bien joué !':' 💪 On révise !')+'</div><button class="nx" style="display:inline-block" id="rs">Recommencer</button>';
+  document.getElementById("rs").onclick=function(){i=0;s=0;show()};return}
+ var q=Q[i];qa.innerHTML='<div class="q">'+q.q+'</div><div class="opts"></div><div class="why"></div><button class="nx" id="nx">Suivant →</button>';
+ var box=qa.querySelector(".opts");
+ q.o.forEach(function(t,k){var b=document.createElement("button");b.textContent=t;b.onclick=function(){
+  var bs=box.querySelectorAll("button");bs.forEach(function(x){x.disabled=true});
+  bs[q.a].className="ok";if(k!==q.a)b.className="ko";else s++;
+  qa.querySelector(".why").textContent=q.w;document.getElementById("nx").style.display="inline-block"};box.appendChild(b)});
+ document.getElementById("nx").onclick=function(){i++;show()};
+}
+var D={
+outlook:{t:"✉️ Outlook",g:[["Envoyer un mail",["Cliquez sur « Nouveau message ».","Tapez l’adresse dans « À » (et « Cc » pour mettre en copie).","Écrivez un objet court et clair.","Rédigez, puis cliquez sur « Envoyer »."]],["Planifier un rendez-vous",["Ouvrez l’icône Calendrier.","Cliquez sur « Nouvel événement ».","Titre, date, heure, invités.","Cochez « Réunion Teams » si besoin, puis « Envoyer »."]]],tip:"Un mail douteux ? Clic droit puis « Signaler » au lieu de répondre."},
+teams:{t:"💬 Teams",g:[["Envoyer un lien de discussion (visio)",["Allez dans « Calendrier » puis « Nouvelle réunion ».","Donnez un titre et ajoutez les invités.","Enregistrez : un lien de réunion est créé.","Ou « Réunion instantanée » puis « Copier le lien » et collez-le dans un mail ou un chat."]],["Discuter",["Cliquez sur « Conversation » puis le crayon.","Choisissez la personne.","Écrivez, ajoutez un fichier avec le trombone."]],["Partager son écran",["Pendant la visio, cliquez sur « Partager ».","Choisissez l’écran ou la fenêtre."]]],tip:"Créez des canaux par sujet pour garder les échanges rangés."},
+onedrive:{t:"☁️ OneDrive",g:[["Sauvegarder mes fichiers",["Ouvrez l’Explorateur (Win+E) puis le dossier OneDrive.","Glissez vos fichiers dedans.","Un nuage vert ✅ = fichier bien sauvegardé."]],["Sauvegarde auto de Bureau et Documents",["Clic sur l’icône nuage près de l’horloge.","Paramètres, puis « Sauvegarde ».","Activez Bureau, Documents, Images."]],["Partager un fichier",["Clic droit sur le fichier.","« Partager » puis tapez le nom.","Choisissez « Peut modifier » ou « Peut afficher » et envoyez."]]],tip:"Ordinateur perdu ou en panne ? Vos fichiers restent dans le cloud."},
+sharepoint:{t:"🗂️ SharePoint",g:[["Partager des fichiers avec l’équipe",["Ouvrez le site d’équipe, puis « Documents ».","Cliquez sur « Charger » et choisissez vos fichiers.","Sélectionnez un fichier puis « Partager » ou « Copier le lien »."]],["Gérer qui voit quoi",["Clic sur le fichier, puis « Gérer l’accès ».","Retirez ou ajoutez des personnes."]]],tip:"OneDrive = mes fichiers. SharePoint = les fichiers de toute l’équipe."},
+word:{t:"📝 Word",g:[["Rédiger un document propre",["Nouveau document vide.","Utilisez les Styles (Titre 1, Titre 2) pour structurer.","Listes à puces pour aérer.","Fichier puis « Enregistrer » dans OneDrive."]],["Travailler à plusieurs",["Bouton « Partager » en haut à droite.","Chacun écrit en même temps, avec le suivi des modifications si besoin."]]],tip:"Pour relire à voix haute : Affichage puis « Lecteur immersif »."},
+excel:{t:"📊 Excel",g:[["Faire un tableau simple",["Écrivez les titres sur la ligne 1.","Saisissez vos données dessous.","Sélectionnez tout puis Insertion, « Tableau ».","Utilisez les flèches des titres pour trier et filtrer."]],["Un total en 2 secondes",["Cliquez sous la colonne de chiffres.","Tapez =SOMME( puis sélectionnez les cellules.","Fermez la parenthèse et validez avec Entrée."]]],tip:"Un graphique : sélectionnez le tableau puis Insertion, « Graphique recommandé »."},
+ppt:{t:"📽️ PowerPoint",g:[["Créer une présentation",["Nouvelle présentation puis choisissez un thème.","Une idée par diapositive, peu de texte.","Ajoutez images et icônes (Insertion).","Mode Diaporama avec F5."]]],tip:"Moins de mots, plus de visuels. Trois idées maximum par diapo."},
+planner:{t:"✅ Planner / To Do",g:[["Suivre ses tâches",["To Do : ajoutez une tâche et une date d’échéance.","Planner : créez un plan, des colonnes (À faire, En cours, Terminé).","Assignez les tâches à vos collègues et déplacez les cartes."]]],tip:"Une tâche terminée = une carte déplacée. Simple et visuel."}
+};
+var P=document.getElementById("panel"),cur=null;
+document.querySelectorAll("button.app").forEach(function(b){b.addEventListener("click",function(){
+ var k=b.getAttribute("data-k");
+ document.querySelectorAll("button.app").forEach(function(x){x.classList.remove("on")});
+ if(cur===k){P.classList.remove("open");cur=null;return}
+ cur=k;b.classList.add("on");var d=D[k],h="<h3>"+d.t+"</h3>";
+ d.g.forEach(function(g){h+="<h4>"+g[0]+"</h4>";g[1].forEach(function(s,n){h+='<div class="st"><b>'+(n+1)+"</b><span>"+s+"</span></div>"})});
+ h+='<div class="tip">💡 '+d.tip+"</div>";P.innerHTML=h;P.classList.add("open");
+ P.scrollIntoView({behavior:"smooth",block:"nearest"});
+})});
+document.querySelectorAll("nav a").forEach(function(a){a.addEventListener("click",function(e){
+ e.preventDefault();var t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth",block:"start"});
+})});
+var H={
+mfa:{t:"📱 Double validation (MFA)",v:'<div class="mock"><div class="mh">🔔 Authenticator</div><div class="mb">Approuver la connexion ?<br><b>✅ Oui, c’est moi</b> &nbsp; <b>❌ Non</b></div></div>',s:["Ouvrez aka.ms/mfasetup sur votre ordinateur.","Installez Microsoft Authenticator sur votre téléphone.","Scannez le QR code affiché.","À chaque connexion, validez sur le téléphone."],tip:"Une demande que vous n’avez pas lancée ? Refusez et prévenez l’IT."},
+mdp:{t:"🔑 Mot de passe solide",v:'<div class="mock"><div class="mb" style="text-align:left"><div class="meter"><i style="width:30px;background:var(--ko)"></i><span>azerty123 ❌</span></div><div class="meter"><i style="width:80px;background:var(--warn)"></i><span>Marseille2024 😐</span></div><div class="meter"><i style="width:150px;background:var(--ok)"></i><span>Mon chat boit du thé à 7h! ✅</span></div></div></div>',s:["Visez 14 caractères ou plus : une phrase, pas un mot.","Un mot de passe différent pour chaque compte.","Pas de prénom, date de naissance ou nom de l’entreprise.","Utilisez un gestionnaire de mots de passe validé par l’IT.","Ne le partagez jamais, même avec l’IT."],tip:"Changez-le tout de suite si vous pensez qu’il a fuité."},
+maj:{t:"🔄 Mettre à jour son PC",v:'<div class="mock"><div class="mh">⚙️ Paramètres › Windows Update</div><div class="mb">✅ Vous êtes à jour<br><span class="btnfake">Rechercher des mises à jour</span></div></div>',s:["Cliquez sur Démarrer puis Paramètres (ou Win+I).","Ouvrez « Windows Update ».","Cliquez sur « Rechercher des mises à jour ».","Cliquez sur « Télécharger et installer ».","Redémarrez quand Windows le demande."],tip:"Pour Office : Fichier, Compte, Options de mise à jour, Mettre à jour maintenant."},
+lock:{t:"🔒 Verrouiller son poste",v:'<div class="mock"><div class="mb"><kbd>Win</kbd> + <kbd>L</kbd> &nbsp;→ 🔐</div></div>',s:["Appuyez sur Win+L chaque fois que vous quittez votre bureau.","Réglez le verrouillage auto : Paramètres, Comptes, Options de connexion.","Ne laissez jamais votre session ouverte en télétravail."],tip:"Cinq secondes de geste, des heures de problèmes évitées."},
+save:{t:"☁️ Sauvegarder ses fichiers",v:'<div class="mock"><div class="mb">💻 Mon PC → ☁️ OneDrive → ✅ En sécurité</div></div>',s:["Enregistrez vos documents dans le dossier OneDrive.","Activez la sauvegarde de Bureau et Documents (icône nuage, Paramètres, Sauvegarde).","Vérifiez le nuage vert ✅ à côté du fichier."],tip:"Un ransomware chiffre vos fichiers ? La version précédente reste récupérable dans OneDrive."},
+rep:{t:"🚩 Signaler sans honte",v:'<div class="mock"><div class="mh">✉️ Outlook</div><div class="mb"><span class="btnfake">🚩 Signaler</span></div></div>',s:["Ne cliquez sur rien dans le mail suspect.","Dans Outlook : clic droit puis « Signaler » (ou bouton Signaler).","Prévenez immédiatement le service IT.","Déjà cliqué ou saisi un mot de passe ? Dites-le tout de suite à l’IT."],tip:"Se tromper arrive à tout le monde. Cacher l’erreur, c’est là le vrai risque."}
+};
+var P2=document.getElementById("panel2"),cur2=null;
+document.querySelectorAll("button.hy").forEach(function(b){b.addEventListener("click",function(){
+ var k=b.getAttribute("data-k");
+ document.querySelectorAll("button.hy").forEach(function(x){x.classList.remove("on")});
+ if(cur2===k){P2.classList.remove("open");cur2=null;return}
+ cur2=k;b.classList.add("on");var d=H[k],h="<h3>"+d.t+"</h3>"+d.v;
+ d.s.forEach(function(s,n){h+='<div class="st"><b>'+(n+1)+"</b><span>"+s+"</span></div>"});
+ h+='<div class="tip">💡 '+d.tip+"</div>";P2.innerHTML=h;P2.classList.add("open");
+ P2.scrollIntoView({behavior:"smooth",block:"nearest"});
+})});
+document.getElementById("fq").addEventListener("input",function(){var v=this.value.toLowerCase(),n=0;
+ document.querySelectorAll("#fl details").forEach(function(d){var ok=d.textContent.toLowerCase().indexOf(v)>-1;d.style.display=ok?"":"none";if(ok)n++});
+ document.getElementById("fnone").style.display=n?"none":"block"});
+show();
+</script>
+</body>
+</html>
